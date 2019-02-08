@@ -5,23 +5,21 @@ int main() {
     // 1. Object Initialize (Copy/Move Constructor)
     // 2. Operation = (Copy/Move Operator=)
     {
-        /*
         class M {
           public:
-            M();
-            M(const M&);    // Copy Constructor
-            M(M&& m);       // Move Constructor
+            M() { std::cout << "Constructor !!" << std::endl; }
+            M(const M&) { std::cout << "Copy Constructor !!" << std::endl; }
+            M(M&& m) { std::cout << "Move Constructor !!" << std::endl; }
 
-            M& operator=(const M&);    // Copy Operator=
-            M& operator=(M&&);         // Move Operator=
+            M& operator=(const M&) { std::cout << "Copy Operator= !!" << std::endl; }
+            M& operator=(M&&) { std::cout << "Move Operator= !!" << std::endl; }
         };
-        */
-        class M {};
 
         M a;                   // Constructor
         M b(a);                // Copy Constructor
         M c(std::move(b));     // Move Constructor
-        M d = std::move(a);    // Move Operator=
+        M d = a;               // Copy Operator=
+        M e = std::move(a);    // Move Operator=
     }
 
     return 0;
